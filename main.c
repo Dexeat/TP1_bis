@@ -10,6 +10,8 @@ struct Monstre
     int attsort;
 };
 
+//Maryam
+
 struct Joueur
 {
     int pv;
