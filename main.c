@@ -44,7 +44,20 @@ void clrscr()
     system("@cls||clear");
 }
 
-int tourJoueur(int PM)
+int tourJoueur(int PM){
+    int choix;
+    printf("1:ATT 2:DEF 3:SORT 4:GERISON :");
+    scanf("%d\n",&choix);
+
+    if (choix == 3 && PM<10)
+    {
+        return 0;
+    }
+    else
+    {
+        return choix;
+    }
+}
 
 
 
@@ -52,6 +65,8 @@ int main(void){
 
     int game;
     int choix;
+    int Cible;
+    game = 1;
 
     //variable des monstre
     monstre demon_inferieur = {50, 4, 6};
@@ -71,12 +86,33 @@ int main(void){
     for (int i = 0; i < 3; i++)
     {
         combat[i] = geneCombat(tableMonstre, 0, 4, 1);
-        printf("PV:%d ATT:%d ATTS:%d\n", combat[i].pv, combat[i].att, combat[i].attsort);
+        //printf("PV:%d ATT:%d ATTS:%d\n", combat[i].pv, combat[i].att, combat[i].attsort);
     }
 
     while(game){
 
+        //Demande du joeur
+        player.PM++;
         choix = tourJoueur(player.PM);
+
+        if (choix == 0)
+        {
+            choix = tourJoueur(player.PM);
+        }
+        
+
+        if (choix == 1){
+            printf("Choisez votre cible: ");
+            scanf("%d\n",&Cible);
+            if (Cible>2)
+            {
+                Cible = 2;
+            }
+            
+            combat[Cible].pv -= player.att;
+            printf("Vous attaquez le monstre!\nle monstre n°%d a maintenant %dPV !\n",Cible,combat[Cible].pv);
+
+        }
 
     }
 
