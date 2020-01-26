@@ -177,16 +177,45 @@ int main(void){
                 printf("Le monstre n°%d vous empoisone !\n", i);
             }
             
-            
-        }
-        
-        
-    }
-	  printf("Votre allié OV3R a attaqué un monstre");
-		printf("Votre allié OV3R vous soigne");
-		printf("Votre allié W.D a attaqué un monstre");
-		printf("Votre allié W.D vous soigne");
-		printf("Votre allié RIVER a attaqué un monstre");
-		printf("Votre allié RIVER vous soigne");	
-  
+            //tour des Allié
+            choix = genRandoms(1,2,1);
+            if (choix == 1)
+            {
+                printf("Votre allié OV3R a attaqué un monstre\n");
+                Cible = genRandoms(0, 2, 1);
+                combat[Cible].pv -= 4;
+            }
+            if (choix == 2)
+            {
+                printf("Votre allié OV3R vous soigne\n");
+                player.pv+=15;
+            }
+
+            choix = genRandoms(1, 2, 1);
+            if (choix == 1)
+            {
+                printf("Votre allié W.D a attaqué un monstre\n");
+                Cible = genRandoms(0,2,1);
+                combat[Cible].pv-=4;
+            }
+            if (choix == 2)
+            {
+                printf("Votre allié W.D vous soigne\n");
+                player.pv += 15;
+            }
+
+            choix = genRandoms(1, 2, 1);
+            if (choix == 1)
+            {
+                printf("Votre allié RIVER a attaqué un monstre\n");
+                Cible = genRandoms(0, 2, 1);
+                combat[Cible].pv -= 4;
+            }
+            if (choix == 2)
+            {
+                printf("Votre allié RIVER vous soigne\n");
+                player.pv += 15;
+            }
+        }      
+    }	
 }
