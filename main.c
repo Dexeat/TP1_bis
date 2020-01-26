@@ -117,6 +117,10 @@ int main(void){
         }
 		printf("Votre allié OV3R a attaqué un monstre");
 		printf("Votre allié OV3R vous soigne");
+		printf("Votre allié W.D a attaqué un monstre");
+		printf("Votre allié W.D vous soigne");
+		printf("Votre allié RIVER a attaqué un monstre");
+		printf("Votre allié RIVER vous soigne");
     }
 		
 }
