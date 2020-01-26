@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+
 //structure pour les monstre
 struct Monstre
 {
@@ -67,6 +68,9 @@ int main(void){
     int choix;
     int Cible;
     game = 1;
+    int defOn;
+    int poison;
+    poison = 0;
 
     //variable des monstre
     monstre demon_inferieur = {50, 4, 6};
@@ -80,7 +84,7 @@ int main(void){
     monstre combat[3];
 
     //PlayerStats
-    joueur player = {50,5,20,15};
+    joueur player = {50000,5,20,15};
 
     //génère les monstre
     for (int i = 0; i < 3; i++)
@@ -93,16 +97,24 @@ int main(void){
 
         //Demande du joeur
         player.PM++;
+        defOn = 0;
+        choix = 0;
         choix = tourJoueur(player.PM);
+
+        if (poison >0)
+        {
+            player.pv-=poison;
+            printf("vous soufrez du poison il vous reste %dPv\n",player.pv);
+        }
+        
 
         if (choix == 0)
         {
             choix = tourJoueur(player.PM);
         }
-        
-
         if (choix == 1){
-            printf("Choisez votre cible: ");
+            clrscr();
+            printf("Choisez votre cible(de 0 à 2): ");
             scanf("%d\n",&Cible);
             if (Cible>2)
             {
@@ -113,6 +125,58 @@ int main(void){
             printf("Vous attaquez le monstre!\nle monstre n°%d a maintenant %dPV !\n",Cible,combat[Cible].pv);
 
         }
+        if (choix == 2)
+        {
+            clrscr();
+            printf("Vous vous defendez !\n");
+            defOn++;
+
+        }
+        if (choix == 3)
+        {
+            printf("Choisez votre cible(de 0 à 2): ");
+            scanf("%d\n", &Cible);
+            if (Cible > 2)
+            {
+                Cible = 2;
+            }
+            clrscr();
+            player.PM-=10;
+            combat[Cible].pv -= player.attsort;
+            printf("Vous lancez une puissance boule de feu !\nle monstre n°%d a maintenant %dPV !\n Il vous reste %dPM\n", Cible, combat[Cible].pv,player.PM);
+        }
+        if (choix == 4)
+        {
+            clrscr();
+            printf("Vous n'êtes plus empoisoné !\n");
+            poison = 0;
+        }
+        
+
+        //Tour du monstre
+        for (int i = 0; i < 3; i++)
+        {
+            choix = genRandoms(1,3,1);
+            if (choix == 1)
+            {
+                player.pv-=combat[i].att;
+                printf("Le monstre n°%d vous attaque ! vous avez %dPV\n",i,player.pv);
+            }
+            if (choix == 2)
+            {
+                player.pv-=combat[i].attsort;
+                printf("Le monstre n°%d vous lance un puissant sort ! vous avez %dPV\n", i, player.pv);
+            }
+            if (choix == 3)
+            {
+                poison++;
+                printf("Le monstre n°%d vous empoisone !\n", i);
+            }
+            
+            
+        }
+        
+        
 
     }
 
