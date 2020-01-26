@@ -84,7 +84,7 @@ int main(void){
     //PlayerStats
     joueur player = {50,5,20,15};
 
-    //génère les monstre
+    //génère les monstres
     for (int i = 0; i < 3; i++)
     {
         combat[i] = geneCombat(tableMonstre, 0, 4, 1);
@@ -93,7 +93,7 @@ int main(void){
 
     while(game){
 
-        //Demande du joeur
+        //Demande du joueur
         player.PM++;
         choix = tourJoueur(player.PM);
 
@@ -104,7 +104,7 @@ int main(void){
         
 
         if (choix == 1){
-            printf("Choisez votre cible: ");
+            printf("Choisissez votre cible: ");
             scanf("%d\n",&Cible);
             if (Cible>2)
             {
@@ -115,7 +115,8 @@ int main(void){
             printf("Vous attaquez le monstre!\nle monstre n°%d a maintenant %dPV !\n",Cible,combat[Cible].pv);
 
         }
-
+		printf("Votre allié OV3R a attaqué un monstre");
+		printf("Votre allié OV3R vous soigne");
     }
-
+		
 }
