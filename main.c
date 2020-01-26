@@ -11,6 +11,8 @@ struct Monstre
     int attsort;
 };
 
+//Maryam
+
 struct Joueur
 {
     int pv;
@@ -86,7 +88,7 @@ int main(void){
     //PlayerStats
     joueur player = {50000,5,20,15};
 
-    //génère les monstre
+    //génère les monstres
     for (int i = 0; i < 3; i++)
     {
         combat[i] = geneCombat(tableMonstre, 0, 4, 1);
@@ -95,7 +97,7 @@ int main(void){
 
     while(game){
 
-        //Demande du joeur
+        //Demande du joueur
         player.PM++;
         defOn = 0;
         choix = 0;
@@ -113,6 +115,7 @@ int main(void){
             choix = tourJoueur(player.PM);
         }
         if (choix == 1){
+
             clrscr();
             printf("Choisez votre cible(de 0 à 2): ");
             scanf("%d\n",&Cible);
@@ -125,6 +128,7 @@ int main(void){
             printf("Vous attaquez le monstre!\nle monstre n°%d a maintenant %dPV !\n",Cible,combat[Cible].pv);
 
         }
+
         if (choix == 2)
         {
             clrscr();
@@ -177,7 +181,12 @@ int main(void){
         }
         
         
-
     }
-
+	  printf("Votre allié OV3R a attaqué un monstre");
+		printf("Votre allié OV3R vous soigne");
+		printf("Votre allié W.D a attaqué un monstre");
+		printf("Votre allié W.D vous soigne");
+		printf("Votre allié RIVER a attaqué un monstre");
+		printf("Votre allié RIVER vous soigne");	
+  
 }
